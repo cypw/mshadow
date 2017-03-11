@@ -31,6 +31,10 @@ endif
 ifneq ($(USE_CUDA_PATH), NONE)
 	MSHADOW_CFLAGS += -I$(USE_CUDA_PATH)/include
 	MSHADOW_LDFLAGS += -L$(USE_CUDA_PATH)/lib64 -L$(USE_CUDA_PATH)/lib
+    ifneq ($(USE_CUDNN_PATH), NONE)
+ 		MSHADOW_CFLAGS += -I$(USE_CUDNN_PATH)/include
+ 		MSHADOW_LDFLAGS += -L$(USE_CUDNN_PATH)/lib64 -L$(USE_CUDNN_PATH)/lib
+    endif
 endif
 
 ifeq ($(USE_BLAS), mkl)
